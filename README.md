@@ -1,23 +1,32 @@
 # Gold Coder Studio
 
-A small browser-hosted FastAPI wrapper around the open-source `trae-agent` project.
+## Overview
+Gold Coder turns a natural-language prompt into an isolated full-stack website scaffold with a responsive preview, Three.js visual effects, an API starter, and an 8K-ready asset manifest.
 
-## Run locally
-
+## Quick start
 ```bash
-docker build -t gold-coder .
-docker run --rm -p 7860:7860 gold-coder
+bash start.sh
 ```
+Then visit **http://localhost:3000**. API documentation is at http://localhost:8000/docs.
 
-Open <http://localhost:7860>.
+## Technology stack
+- Frontend: static HTML/JavaScript, optional Three.js in generated previews
+- Backend: FastAPI + Uvicorn + Pydantic
+- Database: SQLite
+- Deployment: `start.sh`, Python virtual environment, Node static server
+
+## Project structure
+- `main.py` — API, generator, SQLite initialization
+- `start.sh` — clean, self-contained local deployment
+- `requirements.txt` — Python dependencies
+- `docs/design.md` — architecture and API design
+- `projects/` — generated project sandboxes (created at runtime)
 
 ## API
+`POST /api/build`, `GET /api/status`, `GET /api/tools`, `GET /api/projects`, `GET /api/preview/{id}`, `GET /api/projects/{id}/files`, `GET /api/projects/{id}/asset-manifest`, and `POST /api/projects/{id}/feedback`.
 
-- `GET /api/status` — agent and service status
-- `POST /api/build` — create a demo project from `{ "prompt": "..." }`
-- `GET /api/projects` — list generated projects
-- `GET /api/preview/{project_id}` — view a generated project
+## Database
+The deployment script deletes and recreates `gold_coder.sqlite3`; tables are initialized automatically on startup. Feedback is stored for future product/template improvements.
 
-The current `/api/build` endpoint creates a safe placeholder preview. Connect the
-agent execution flow in `build_website` before enabling arbitrary code generation
-in a production deployment.
+## Production notes
+Use a real task queue and sandbox before running generated server code. Configure `CORS_ORIGINS` with explicit trusted origins, add authentication/rate limits, and provide licensed image assets. The generator does not silently self-modify its source code.
