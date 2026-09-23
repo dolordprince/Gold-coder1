@@ -1,26 +1,29 @@
-# Codex+ Unified Studio
+# Codex+ Luxe Studio
 
-Codex+ is the Gold Coder command center. It uses Pollinations public free endpoints as the reasoning and visual brain and stores build sessions in browser history.
+A Pollinations-powered premium website and app architect. Describe a product and receive a clean JSON blueprint containing multi-page routes, information architecture, luxury color and font direction, image art direction, 3D effects, components, data models, build steps, and quality checks.
 
-## Run locally
+## Run
 ```bash
 cd codex-plus-studio
 npm install
 npm run dev
 ```
 
-Open http://localhost:3000.
+## Pollinations-only architecture
+The Codex route uses the public free text endpoint:
+`https://text.pollinations.ai/{encoded-prompt}?model=openai&json=true`
 
-## Pollinations free endpoints
-No API key or paid account is used by this integration:
-- Text: `https://text.pollinations.ai/{prompt}`
-- Images: `https://image.pollinations.ai/prompt/{prompt}?width=...&height=...&nologo=true`
+The visual canvas uses the public free image endpoint:
+`https://image.pollinations.ai/prompt/{encoded-prompt}?width=1400&height=900&nologo=true`
 
-The server route `POST /api/codex` forwards requests to the free text endpoint. Availability and rate limits are controlled by Pollinations.
+No API key, paid provider, demo fallback, or mock response is used. Public endpoint availability and rate limits are controlled by Pollinations.
 
-## Included
-- Persistent browser build history with up to 50 sessions
-- Pollinations-powered Codex orchestration
-- Pollinations-generated visual command center
-- PWA manifest and offline service worker
-- Vercel-ready configuration
+## Capabilities
+- Clean machine-readable JSON blueprints
+- Multiple-page route planning and section architecture
+- Generated luxury palette with hex values and font pairing
+- Pollinations visual concept generation
+- 3D scene, objects, lighting, and motion direction
+- Component, data model, build sequence, and quality checks
+- Up to 50 local history sessions
+- PWA offline shell and Vercel deployment configuration
