@@ -16,13 +16,13 @@ export default function manifest(): MetadataRoute.Manifest {
         src: 'https://image.pollinations.ai/prompt/premium_glassmorphism_app_icon?width=192&height=192&nologo=true',
         sizes: '192x192',
         type: 'image/png',
-        purpose: 'any maskable'
+        purpose: 'maskable'
       },
       {
         src: 'https://image.pollinations.ai/prompt/premium_glassmorphism_app_icon?width=512&height=512&nologo=true',
         sizes: '512x512',
         type: 'image/png',
-        purpose: 'any maskable'
+        purpose: 'maskable'
       }
     ]
   };
