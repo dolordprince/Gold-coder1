@@ -1,48 +1,26 @@
 # Codex+ Unified Studio
 
-A premium Next.js + Tailwind launchpad for the system prompt you provided.
+Codex+ is the Gold Coder command center. It uses Pollinations public free endpoints as the reasoning and visual brain and stores build sessions in browser history.
 
-## Stack
-- Next.js 14 (App Router)
-- Tailwind CSS
-- Framer Motion
-- Pollinations AI visual generation
-- Vercel deployment manifest
-- PWA manifest + service worker
-
-## Local development
+## Run locally
 ```bash
 cd codex-plus-studio
 npm install
 npm run dev
 ```
 
-Open http://localhost:3000
+Open http://localhost:3000.
 
-## Pollinations UI workflow
-Use this concept in a notebook or app UI:
-```html
-<img src="https://image.pollinations.ai/prompt/3d_render_hyper_realistic_glassmorphism_bento_dashboard_ui?width=1400&height=900&nologo=true" />
-```
+## Pollinations free endpoints
+No API key or paid account is used by this integration:
+- Text: `https://text.pollinations.ai/{prompt}`
+- Images: `https://image.pollinations.ai/prompt/{prompt}?width=...&height=...&nologo=true`
 
-## Vercel preview activation
-Create a project in Vercel and use the API with a token:
-```bash
-export VERCEL_TOKEN="your_token_here"
-export VERCEL_PROJECT_ID="your_project_id_here"
+The server route `POST /api/codex` forwards requests to the free text endpoint. Availability and rate limits are controlled by Pollinations.
 
-curl -X POST "https://api.vercel.com/v1/deployments" \
-  -H "Authorization: Bearer $VERCEL_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "codex-plus-studio",
-    "project": "$VERCEL_PROJECT_ID",
-    "target": "preview"
-  }'
-```
-
-## Files included
-- `vercel.json` — Vercel deployment config
-- `app/manifest.ts` — generated PWA manifest
-- `public/sw.js` — service worker for offline-first behavior
-- `app/page.tsx` — premium UI landing page
+## Included
+- Persistent browser build history with up to 50 sessions
+- Pollinations-powered Codex orchestration
+- Pollinations-generated visual command center
+- PWA manifest and offline service worker
+- Vercel-ready configuration

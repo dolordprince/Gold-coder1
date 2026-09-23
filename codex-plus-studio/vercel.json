@@ -1,4 +1,5 @@
 {
+  "name": "codex-plus-studio",
   "framework": "nextjs",
   "installCommand": "npm install",
   "buildCommand": "npm run build",
